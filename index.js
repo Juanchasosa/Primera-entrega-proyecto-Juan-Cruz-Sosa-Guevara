@@ -21,19 +21,19 @@ const comprarMoneda = () => {
         case 1:
             let cantidadDeDolares = parseInt(prompt("Cuántos dólares desea comprar?"));
             let totalDeDolares = cantidadDeDolares * divisas[0].precio;
-            alert("El precio total en pesos argentinos es: $" + totalDeDolares);
+            alert("El precio total en pesos argentinos es: $" + totalDeDolares.toFixed(2));
             break;
         
         case 2:
             let cantidadDeEuros = parseInt(prompt("Cuántos Euros desea comprar?"));
             let totalDeEuros = cantidadDeEuros * divisas[1].precio;
-            alert("El precio total en pesos argentinos es: $" + totalDeEuros);
+            alert("El precio total en pesos argentinos es: $" + totalDeEuros.toFixed(2));
             break;
         
         case 3:
             let cantidadDeReales = parseInt(prompt("Cuántos Reales desea comprar?"));
             let totalDeReales = cantidadDeReales * divisas[2].precio;
-            alert("El precio total en pesos argentinos es: $" + totalDeReales);
+            alert("El precio total en pesos argentinos es: $" + totalDeReales.toFixed(2));
             break;
         
 
