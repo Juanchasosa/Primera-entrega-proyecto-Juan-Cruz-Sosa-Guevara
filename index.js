@@ -1,50 +1,45 @@
-class Divisa{
-    constructor (nombre, precio){
+const productos = [];
+
+class Producto{
+    constructor(nombre, precio, img){
         this.nombre = nombre;
         this.precio = precio;
-    };
-};
-
-const divisas = [];
-
-divisas.push(new Divisa ("Dólar", 160.88));
-divisas.push(new Divisa ("Euro", 131.77));
-divisas.push(new Divisa ("Real", 23.90));
-
-const comprarMoneda = () => {
-
-    let operacion;
-    do{
-        operacion = parseInt(prompt("Qúe moneda desea comprar? 1) Dólar 2) Euro 3) Real"));
-
-    switch (operacion) {
-        case 1:
-            let cantidadDeDolares = parseInt(prompt("Cuántos dólares desea comprar?"));
-            let totalDeDolares = cantidadDeDolares * divisas[0].precio;
-            alert("El precio total en pesos argentinos es: $" + totalDeDolares.toFixed(2));
-            break;
-        
-        case 2:
-            let cantidadDeEuros = parseInt(prompt("Cuántos Euros desea comprar?"));
-            let totalDeEuros = cantidadDeEuros * divisas[1].precio;
-            alert("El precio total en pesos argentinos es: $" + totalDeEuros.toFixed(2));
-            break;
-        
-        case 3:
-            let cantidadDeReales = parseInt(prompt("Cuántos Reales desea comprar?"));
-            let totalDeReales = cantidadDeReales * divisas[2].precio;
-            alert("El precio total en pesos argentinos es: $" + totalDeReales.toFixed(2));
-            break;
-        
-
-        default:
-            alert ("No ha ingresado un valor correcto");
-            operacion = "";
-            break;
-    };
-        
-    } while (!operacion);
+        this.img = img;
+    }
 }
 
-comprarMoneda();
+productos.push(new Producto ("Televisor Samsumg", 40999, "asdwdfefad"));
+productos.push(new Producto ("Televisor Philco", 41999, "asdwdfefad"));
+productos.push(new Producto ("Televisor Hitachi", 42999, "asdwdfefad"));
+productos.push(new Producto ("Televisor Samsumg 2", 30999, "asdwdfefad"));
+productos.push(new Producto ("Televisor Sony", 45999, "asdwdfefad"));
+productos.push(new Producto ("Samsumg galaxy", 50999, "asdwdfefad"));
+productos.push(new Producto ("Samsumg a62", 40000, "asdwdfefad"));
+productos.push(new Producto ("Samsumg note", 60000, "asdwdfefad"));
+productos.push(new Producto ("Samsumg s22", 23000, "asdwdfefad"));
+productos.push(new Producto ("Samsumg fold", 320000, "asdwdfefad"));
+productos.push(new Producto ("Samsumg flip", 245000, "asdwdfefad"));
+productos.push(new Producto ("Ps5", 30000, "asdwdfefad"));
+productos.push(new Producto ("Microondas", 24000, "asdwdfefad"));
+productos.push(new Producto ("Lavarropas", 24000, "asdwdfefad"));
+productos.push(new Producto ("Notebook", 24000, "asdwdfefad"));
+productos.push(new Producto ("Tablet", 24000, "asdwdfefad"));
+productos.push(new Producto ("Horno", 24000, "asdwdfefad"));
 
+
+let container = document.getElementById("container");
+
+let busqueda = prompt("El producto que está buscando");
+const capitalize = busqueda.charAt(0).toUpperCase() + busqueda.slice(1).toLowerCase();
+let filtrados = productos.filter(elemento => elemento.nombre.includes(capitalize));
+let menorAMayor = filtrados.sort ((a, b) => a.precio - b.precio);
+
+for (const producto of menorAMayor) {
+    let items = document.createElement("div");
+    items.innerHTML = `<h2>${producto.nombre}</2>
+                        <p>Precio: ${producto.precio}</p>
+                        <img src= ${producto.img}>`;
+
+    container.append(items);
+    
+}
